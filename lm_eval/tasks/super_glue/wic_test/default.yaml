@@ -1,0 +1,19 @@
+group:
+  - super-glue-test
+task: "wic_test"
+dataset_path: json
+dataset_name: null
+dataset_kwargs:
+  data_files: 
+    train: /home/moongs/workspace/lm-evaluation-harness/data/wic_lm_eval/train_leh.json
+    test: /home/moongs/workspace/lm-evaluation-harness/data/wic_lm_eval/test_leh.json
+fewshot_split: train
+test_split: test
+output_type: multiple_choice
+doc_to_text: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Is the word '{{sentence1[start1:end1]}}' used in the same way in the two sentences above?\nAnswer:"
+doc_to_target: label
+doc_to_choice: ['no', 'yes']
+metric_list:
+  - metric: acc
+metadata:
+  version: 1.0
