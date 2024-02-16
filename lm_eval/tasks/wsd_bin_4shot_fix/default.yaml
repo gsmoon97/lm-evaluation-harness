@@ -1,0 +1,20 @@
+task: wsd_bin_4shot_fix
+dataset_path: json
+dataset_name: null
+dataset_kwargs:
+  data_files: 
+    train: /home/moongs/workspace/lm-evaluation-harness/data/wsd_lm_eval/BIN_base_train.json
+    test: /home/moongs/workspace/lm-evaluation-harness/data/wsd_lm_eval/BIN_base_test.json
+fewshot_split: train
+test_split: test
+output_type: multiple_choice
+description: "Is it correct that the definition of the word \"gave\" in \"This (gave) Doc the whole range of the naval establishment , and suited him quite well .\" is \"bestow\"? no\n\nIs it correct that the definition of the word \"swing\" in \"We were forbidden to (swing) on the gates , lest they sag on their hinges in a poor-white-trash way , but we could stand on them , when they were latched , rest our chins on the top , and stare and stare , committing to memory , quite unintentionally , all the details that lay before our eyes .\" is \"move or walk in a swinging or swaying manner\"? yes\n\nIs it correct that the definition of the word \"stroke\" in \"Something of this can be learned from `` The Way to the Churchyard '' ( 1901 ) , an anecdote about an old failure whose fit of anger at a passing cyclist causes him to die of a (stroke) or seizure .\" is \"a sudden loss of consciousness resulting when the rupture or occlusion of a blood vessel leads to oxygen lack in the brain\"? yes\n\nIs it correct that the definition of the word \"fall\" in \"I saw the pony (fall) like a stone and the young warrior flew over its head , bouncing like a rubber ball .\" is \"lose one's chastity\"? no\n\n"
+doc_to_text: text
+doc_to_target: answer
+doc_to_choice: ['no', 'yes']
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0

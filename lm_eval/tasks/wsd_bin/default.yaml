@@ -1,0 +1,19 @@
+task: wsd_bin
+dataset_path: json
+dataset_name: null
+dataset_kwargs:
+  data_files: 
+    train: /home/moongs/workspace/lm-evaluation-harness/data/wsd_lm_eval/BIN_base_train.json
+    test: /home/moongs/workspace/lm-evaluation-harness/data/wsd_lm_eval/BIN_base_test.json
+fewshot_split: train
+test_split: test
+output_type: multiple_choice
+doc_to_text: text
+doc_to_target: answer
+doc_to_choice: ['no', 'yes']
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0

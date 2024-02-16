@@ -1,6 +1,6 @@
 group:
   - super-glue-test
-task: "wic_test"
+task: "wic_test_eos"
 dataset_path: json
 dataset_name: null
 dataset_kwargs:
@@ -11,8 +11,9 @@ fewshot_split: train
 test_split: test
 output_type: multiple_choice
 # description: "Please only respond 'yes' or 'no'.\n\n"
-# description: "Answer 'yes' or 'no'.\n\n"
-doc_to_text: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Is the word '{{sentence1[start1:end1]}}' used in the same way in the two sentences above?\nAnswer:"
+# doc_to_text: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Is the word '{{sentence1[start1:end1]}}' used in the same way in the two sentences above?\nAnswer:</s>"
+doc_to_text: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Is the word '{{sentence1[start1:end1]}}' used in the same way in the two sentences above?\nAnswer: </s>"
+target_delimiter: ""
 doc_to_target: label
 doc_to_choice: ['no', 'yes']
 metric_list:

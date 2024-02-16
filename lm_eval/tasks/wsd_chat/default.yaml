@@ -1,0 +1,20 @@
+task: wsd_chat
+dataset_path: json
+dataset_name: null
+dataset_kwargs:
+  data_files: 
+    train: /home/moongs/workspace/lm-evaluation-harness/data/wsd_lm_eval/MCQ_chat_train.json
+    test: /home/moongs/workspace/lm-evaluation-harness/data/wsd_lm_eval/MCQ_chat_test.json
+fewshot_split: train
+test_split: test
+output_type: multiple_choice
+doc_to_text: question
+doc_to_target: answer
+target_delimiter: ""
+doc_to_choice: choices
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0

@@ -1,0 +1,21 @@
+group:
+  - super-glue-test
+task: "wic_test_4shot_eos"
+dataset_path: json
+dataset_name: null
+dataset_kwargs:
+  data_files: 
+    train: /home/moongs/workspace/lm-evaluation-harness/data/wic_lm_eval/train_leh.json
+    test: /home/moongs/workspace/lm-evaluation-harness/data/wic_lm_eval/test_leh.json
+fewshot_split: train
+test_split: test
+output_type: multiple_choice
+description: "Sentence 1: $50 won't even purchase a dress.\nSentence 2: Carmen purchased a dress for $50.\nQuestion: Is the word 'purchase' used in the same way in the two sentences above?\nAnswer: </s>yes\n\nSentence 1: He has a smooth line but I didn't fall for it.\nSentence 2: A dedicated line.\nQuestion: Is the word 'line' used in the same way in the two sentences above?\nAnswer: </s>no\n\nSentence 1: Paul laughed a cheerful laugh.\nSentence 2: She laughed her excitement.\nQuestion: Is the word 'laughed' used in the same way in the two sentences above?\nAnswer: </s>yes\n\nSentence 1: He was ejected for protesting the call.\nSentence 2: After two raises there was a call.\nQuestion: Is the word 'call' used in the same way in the two sentences above?\nAnswer: </s>no\n\n"
+doc_to_text: "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Is the word '{{sentence1[start1:end1]}}' used in the same way in the two sentences above?\nAnswer: </s>"
+target_delimiter: ""
+doc_to_target: label
+doc_to_choice: ['no', 'yes']
+metric_list:
+  - metric: acc
+metadata:
+  version: 1.0
