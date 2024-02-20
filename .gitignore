@@ -16,3 +16,13 @@ temp
 # IPython
 profile_default/
 ipython_config.py
+
+# data related
+data/
+semcor*.json
+*.json
+*.jsonl
+
+# log related
+*.out
+*.log
