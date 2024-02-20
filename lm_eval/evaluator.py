@@ -426,6 +426,12 @@ def evaluate(
                         "resps": [req.resps for req in requests],
                         "filtered_resps": [req.filtered_resps[key] for req in requests],
                     }
+                    # # for normalizing logits
+                    # if task.get_config("output_type") == "multiple_choice":
+                    #     choices = task.doc_to_choice(doc)
+                    #     completion_len = [float(len(i)) for i in choices]
+                    #     example['choices_len'] = completion_len
+
                     example.update(metrics)
                     samples[task_name].append(example)
                 for metric, value in metrics.items():
