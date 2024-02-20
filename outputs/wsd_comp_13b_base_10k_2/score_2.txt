@@ -1,0 +1,15 @@
+Scorer gold-standard_key_file system_key_file
+
+Scorer gold-standard_key_file system_key_file
+
+Scorer gold-standard_key_file system_key_file
+
+P=	63.4%
+R=	63.4%
+F1=	63.4%
+P=	65.7%
+R=	65.7%
+F1=	65.7%
+P=	64.4%
+R=	64.4%
+F1=	64.4%
