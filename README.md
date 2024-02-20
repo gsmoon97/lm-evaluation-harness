@@ -1,3 +1,74 @@
+# lm-evaluation-harness
+## Downloading datasets
+You need to copy-paste the following datasets to `data` folder in the top directory:
+```
+scp -r /home/moongs/workspace/llama-wsd/data .
+```
+<!-- You need to download the following datasets and save them under `data` folder in the top directory:
+
+ * [WSD Evaluation Framework](http://lcl.uniroma1.it/wsdeval)
+ * [WiC Evaluation Framework](https://pilehvar.github.io/wic) -->
+
+## Running experiments
+### Evaluation
+The following are the available tasks for the WSD & WiC experiments. Replace the `{task}` accordingly to run experiments.
+- `wsd` : evaluate WSD in `MCQ_NUM` style
+- `wsd_comp` : evaluate WSD in `COMP` style
+- `wsd_bin` : WSD in `BIN` style
+- `wsd_4shot_seed3` : evaluate WSD in `MCQ_NUM` style with fixed set of 4shot examples
+- `wsd_4shot_seed3_eos` : evaluate WSD in `MCQ_NUM` style with fixed set of 4shot examples and EOS token(`</s>`) at the end of each question
+- `wic_test` : evaluate WiC on test set
+- `wic_test_eos` : evaluate WiC on test set with EOS token(`</s>`) at the end of each question
+- `wic_test_4shot` : evaluate WiC on test set with fixed set of 4shot examples
+- `wic_test_4shot_eos` : evaluate WiC on test set with fixed set of 4shot examples and EOS token(`</s>`) at the end of each question
+
+Evaluate the fine-tuned model
+```
+bash test_finetune.sh {device} {task} {model_id} {model_type} {peft_model}
+```
+- `{device}` : specify the ID of the CUDA device to use
+- `{task}` : specify the task to evaluate the fine-tuned model on 
+    - `wsd`
+    - `wsd_comp`
+    - `wsd_bin`
+    - `wic_test`
+    - `wic_test_eos`
+- `{model_id}` : specify the id of the fine-tuned model
+    - `llama_7b`
+    - `llama_13b`
+    - `mistral_7b`
+    - `flan_t5_xl`
+- `{model_type}` : specify the type of the fine-tuned model
+    - `base`
+    - `chat`
+- `{peft_model}` : specify the path to the fine-tuned model
+
+Evaluate the model for zero-shot or few-shot prompting
+```
+bash test_nshot.sh {device} {task} {model_id} {model_type} {n_shot}
+```
+- `{device}` : specify the ID of the CUDA device to use
+- `{task}` : specify the task to evaluate the fine-tuned model on 
+    - `wsd`
+    - `wsd_comp`
+    - `wsd_bin`
+    - `wsd_4shot_seed3`
+    - `wsd_4shot_seed3_eos`
+    - `wic_test`
+    - `wic_test_eos`
+    - `wic_test_4shot`
+    - `wic_test_4shot_eos`
+- `{model_id}` : specify the id of the fine-tuned model
+    - `llama_7b`
+    - `llama_13b`
+    - `mistral_7b`
+    - `flan_t5_xl`
+- `{model_type}` : specify the type of the fine-tuned model
+    - `base`
+    - `chat`
+- `{n_shot}` : specify the number of in-context learning examples
+    - specify as 0 for `wsd_4shot_seed3`, `wsd_4shot_seed3_eos`, `wic_test_4shot`, and `wic_test_4shot_eos`
+
 # Language Model Evaluation Harness
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10256836.svg)](https://doi.org/10.5281/zenodo.10256836)

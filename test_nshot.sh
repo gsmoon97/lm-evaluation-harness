@@ -43,10 +43,10 @@ wic_tasks="wic_test wic_test_eos wic_test_4shot wic_test_4shot_eos"
 
 lm_eval \
     --model hf \
-    --model_args pretrained=${model_path} \
+    --model_args pretrained=${base_model} \
     --tasks ${task} \
     --device cuda:${device} \
-    --batch_size auto:4 \
+    --batch_size 4 \
     --num_fewshot ${n_shot} \
     --output_path ${data} \
     --log_samples
